@@ -137,18 +137,26 @@ function createParticles() {
 }
 
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  createParticles();
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  ctx.scale(dpr, dpr); // Масштабування для чіткішого зображення
+
+  drawBackground(); // Оновлюємо фон після зміни розміру
+  createParticles(); // Перестворюємо частинки відповідно до нового розміру
 }
 
+
 function drawBackground() {
-  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  const dpr = window.devicePixelRatio || 1;
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height / dpr);
   gradient.addColorStop(0, "black");
   gradient.addColorStop(1, "darkgray");
+
   ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0, 0, canvas.width / dpr, canvas.height / dpr);
 }
+
 
 function connectParticles() {
   const gridSize = 120;
