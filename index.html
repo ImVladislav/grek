@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>$GREK </title>
+   <link rel="stylesheet" href="styles.css" />
+   <!-- Підключення CSS -->
+   <!-- <link rel="icon" href="logo.png" type="image/png" /> -->
+   <!-- Додавання фавіконки -->
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+   <div class="container">
+      <div class="header">
+         <img src="ico7.png" alt="Logo" class="main-logo" />
+         <!-- <img src="logo_1.png" alt="Ignite" class="title" /> -->
+         <p class="title">$GREK </p>
+         <!-- <p class="slogan">
+            <span>WORK</span>
+               <span>HARD,</span>
+               <span>PLAY</span>
+               <span>HARD</span>
+         </p> -->
+      </div>
+
+      <div class="progress-bar">
+         <div class="progress-text" id="progressText">
+            xxxxxxxxx
+         </div>
+      </div>
+
+      <!-- <h1 class="animate__bounceInDown wow animate__animated">
+                                            CHAT WITH WOOL AI
+                                          </h1> -->
+
+
+
+
+
+      <div class="chat-container">
+
+
+
+            <h3 style="
+                                                         font-size: 32px; /* Задаємо розмір шрифта */
+                                                 font-weight: bold; /* Товстий шрифт */
+                                                 -webkit-background-clip: text; /* Дозволяє застосувати градієнт до тексту */
+                                                 color: white; /* Зробити сам текст прозорим, щоб градієнт був видимий */
+                                                 text-align: center; /* Вирівнювання тексту по центру */
+                                                 margin: 15px 0;
+                                             ">Chat with $GREK</h3>
+
+         <div id="chat-container" style="padding: 10px; height: 48vh;     width: 80%;
+    max-width: 800px; display: flex; flex-direction: column;">
+            <div id="chat-history" style="color: #fff; flex: 1; overflow-y: auto; margin-bottom: 10px;"></div>
+            <div style="width: 100%; max-width: 800px; display: flex
+            ;
+                flex-direction: row;" class="button_block">
+               <input type="text" id="user-input" placeholder="Enter your message..."
+                  style="flex: 1; padding: 10px; color: #fff;">
+               <button id="send-button" style="margin-left: 8px;" class="btn_send">Send</button>
+            </div>
+         </div>
+
+
+
+
+
+         <style>
+            /* Стилі для контейнера чату */
+            #chat-container {
+               padding: 10px;
+               height: 200px;
+               display: flex;
+               flex-direction: column;
+               /* background-c
+                                                     olor: rgba(0, 0, 0, 0.5); */
+               /* background-color: #444; */
+               background-color: rgba(0, 0, 0, 0.5);
+               margin-left: auto;
+               margin-right: auto;
+               /* Прозорий чорний фон */
+               border-radius: 10px;
+               /* backdrop-filter: blur(10px); */
+               /* Додає ефект розмиття фону */
+               /* background-image: url('./site2.png'); */
+               /* Шлях до вашої картинки */
+               background-size: cover;
+               /* Картинка покриває весь екран */
+               background-position: contain;
+               /* Центрування картинки */
+               background-repeat: no-repeat;
+               position: relative;
+               z-index: 2;
+               align-items: center
+            }
+
+            /* Стиль для історії чату */
+            #chat-history {
+               color: #fff;
+               flex: 1;
+               overflow-y: auto;
+               margin-bottom: 10px;
+               display: flex;
+               flex-direction: column;
+               max-width: 1400px;
+               width: 100%;
+            }
+
+            /* Стилі для текстового поля вводу */
+            #user-input {
+               flex: 1;
+               padding: 10px;
+               border: 1px solid #444444;
+               border-radius: 5px;
+               background-color: rgba(255, 255, 255, 0.2);
+               /* Легкий прозорий білий фон */
+               /* color: black !important; */
+               font-family: SpaceColony-Bold;
+               width: 100%;
+               max-width: 700px;
+               font-weight: 200;
+               font-style: normal;
+            }
+
+            @media screen and (max-width: 730px) {
+               #user-input {
+                  width: 80%;
+               }
+            }
+
+            /* Стиль для кнопки відправки */
+            #send-button {
+               font-family: SpaceColony-Bold;
+               font-weight: 200;
+               font-style: normal;
+               padding: 10px;
+               border: none;
+               border-radius: 5px;
+               background-color: #555555;
+               color: #fff;
+               cursor: pointer;
+            }
+
+            /* Зміни для стилю скролбару */
+            #chat-history::-webkit-scrollbar {
+               width: 10px;
+               background-color: #f1f1f1;
+               border-radius: 10px;
+            }
+
+            #chat-history::-webkit-scrollbar-thumb {
+               background-color: #555555;
+               border-radius: 10px;
+               border: 2px solid #fff;
+               box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+
+            #chat-history::-webkit-scrollbar-track {
+               background: rgba(255, 255, 255, 0.3);
+               border-radius: 10px;
+            }
+
+            /* Повідомлення користувача */
+            .user-message {
+               text-align: right;
+               margin: 5px 0;
+               display: inline-block;
+               background-color: #444;
+               color: white;
+               padding: 10px;
+               border-radius: 15px;
+               max-width: 70%;
+               position: relative;
+               align-self: flex-end;
+               opacity: 0;
+               animation: fadeIn 0.5s forwards;
+            }
+
+            /* Повідомлення бота */
+            .bot-message {
+               text-align: left;
+               margin: 5px 0;
+               display: inline-block;
+               background-color: hsl(0deg 0% 100%);
+               color: black;
+               padding: 10px;
+               border-radius: 15px;
+               max-width: 70%;
+               position: relative;
+               border: 1px solid #2a2a2a;
+               align-self: flex-start;
+               opacity: 0;
+               animation: fadeIn 0.5s forwards;
+            }
+
+            /* Стиль для аватарки бота */
+            .bot-avatar {
+               display: inline-block;
+               width: 30px;
+               height: 30px;
+               /* border-radius: 50%; */
+               background-image: url('100x100.png');
+               background-size: cover;
+               vertical-align: middle;
+            }
+
+            /* Анімація для плавного появлення повідомлень */
+            @keyframes fadeIn {
+               from {
+                  opacity: 0;
+               }
+
+               to {
+                  opacity: 1;
+               }
+            }
+
+            /* Стилі для кнопки на ховері */
+            #send-button:hover {
+               background-color: #444;
+            }
+
+            /* Прозорість для фону кнопки */
+            #send-button {
+               background-color: rgba(255, 255, 255, 0.2);
+               border-radius: 5px;
+               cursor: pointer;
+               transition: all 0.3s ease;
+            }
+
+            */
+         </style>
+         <script>
+            const chatHistory = JSON.parse(sessionStorage.getItem('chatHistory')) || [];
+
+            function updateChatHistory() {
+               const chatHistoryDiv = document.getElementById('chat-history');
+               chatHistoryDiv.innerHTML = chatHistory.map(msg => msg).join('');
+               chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight;
+            }
+
+            function addMessageToChat(message, isUser) {
+               const messageDiv = document.createElement('div');
+               messageDiv.className = isUser ? 'user-message' : 'bot-message';
+               if (!isUser) {
+                  messageDiv.innerHTML = `<div class="bot-avatar"></div> <span>${message}</span>`;
+               } else {
+                  messageDiv.innerHTML = `<span>${message}</span>`;
+               }
+
+               chatHistory.push(messageDiv.outerHTML);
+               updateChatHistory();
+
+               messageDiv.style.opacity = 0;
+               setTimeout(() => {
+                  messageDiv.style.opacity = 1;
+               }, 0);
+            }
+
+            document.getElementById('send-button').addEventListener('click', sendMessage);
+            document.getElementById('user-input').addEventListener('keypress', function (e) {
+               if (e.key === 'Enter') {
+                  sendMessage();
+               }
+            });
+
+            async function sendMessage() {
+               const sendButton = document.getElementById('send-button');
+
+               if (sendButton.disabled) return
+
+               const userInput = document.getElementById('user-input').value;
+               if (!userInput) return;
+
+               addMessageToChat(`you: ${userInput}`, true);
+               sessionStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+               document.getElementById('user-input').value = '';
+
+               const typingIndicator = document.createElement('div');
+               typingIndicator.className = 'bot-message';
+               typingIndicator.innerHTML = `<div class="bot-avatar"></div> <span> GREK is typing...</span>`;
+               chatHistory.push(typingIndicator.outerHTML);
+               updateChatHistory();
+
+               // Блокируем кнопку отправки
+               sendButton.disabled = true;
+               const backendUrl = 'https://wool-back.onrender.com/chat';
+               // const backendUrl = 'http://localhost:4000/chat';
+               const fetchPromise = fetch(backendUrl, {
+                  method: 'POST',
+                  headers: {
+                     'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({ messages: chatHistory.slice(-10) })
+               });
+
+               // Таймер на 5 секунд
+               const timeoutPromise = new Promise((_, reject) =>
+                  setTimeout(() => reject(new Error('Server error')), 5000)
+               );
+
+               try {
+                  const response = await Promise.race([fetchPromise, timeoutPromise]);
+                  if (!response.ok) {
+                     throw new Error(`Error: ${response.status} ${response.statusText}`);
+                  }
+                  const data = await response.json();
+                  chatHistory.pop();
+                  addMessageToChat(`${data.reply}`, false);
+               } catch (error) {
+                  chatHistory.pop();
+                  addMessageToChat(`Error: ${error.message || 'request error'}`, false);
+               } finally {
+                  updateChatHistory();
+                  sessionStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+                  // Разблокируем кнопку отправки
+                  sendButton.disabled = false;
+
+               }
+            }
+            updateChatHistory();
+         </script>
+      </div>
+      <div class="icons">
+         <!-- <a href="https://www.dextools.io/app/en/solana/pair-explorer/xxxxxxxxx
+               " target="_blank">
+                  <img src="ico1.png" alt="Icon 1" />
+               </a>
+               <a href="https://dexscreener.com/solana/xxxxxxxxx" target="_blank">
+                  <img src="ico2.png" alt="Icon 2" />
+               </a> -->
+         <!-- <a href="https://raydium.io/swap/?inputMint=sol&outputMint=xxxxxxxxx" target="_blank">
+                  <img src="ico6.png" alt="Icon 3" />
+               </a> -->
+         <a href="https://t.me/BroccoliFartSol" target="_blank">
+            <img src="ico3.png" alt="Icon 4" />
+         </a>
+         <a href="https://x.com/BroccoliFartSol" target="_blank">
+            <img src="ico4.png" alt="Icon 5" />
+         </a>
+      </div>
+   </div>
+
+   </div>
+
+
+
+
+
+
+
+   <canvas id="canvas"></canvas>
+   <script>
+      document
+         .getElementById('progressText')
+         .addEventListener('click', function () {
+            const textToCopy = this.textContent;
+            navigator.clipboard
+               .writeText(textToCopy)
+               .then(() => {
+                  alert('Text copied to clipboard!');
+               })
+               .catch((err) => {
+                  console.error('Failed to copy text: ', err);
+               });
+         });
+   </script>
+   <script src="index.js"></script>
+</body>
+
+</html>
